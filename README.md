@@ -1,5 +1,6 @@
 # stories-api
-REST API for Stories
+REST API for Stories.  
+Python 3.8 + Flask-RESTful
 
 ## Usage:
 ```
