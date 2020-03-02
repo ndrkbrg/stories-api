@@ -63,12 +63,20 @@ class StoryList(Resource):
         STORIES = save_to_file(STORIES)
         return STORIES[story_id], 200
 
+class StoryCover(Resource):
+    def get(self, story_id):
+        abort_if_doesnt_exist(story_id)
+        try:
+            return STORIES[story_id]['cover']
+        except KeyError:
+            return "No cover", 404
 
 ##
 ## Actually setup the Api resource routing here
 ##
 api.add_resource(StoryList, '/stories')
 api.add_resource(Story, '/stories/<story_id>')
+api.add_resource(StoryCover, '/story_cover/<story_id>')
 
 
 if __name__ == '__main__':
